@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WiFi-Up™ - Consultoría en Automatización Inteligente para PyMEs</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);
+            color: white;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.05" d="M0,96L48,112C96,128,192,160,288,165.3C384,171,480,149,576,128C672,107,768,85,864,90.7C960,96,1056,128,1152,133.3C1248,139,1344,117,1392,106.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .logo {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        
+        .tagline {
+            font-size: 24px;
+            font-weight: 300;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+        
+        .value-prop {
+            font-size: 18px;
+            line-height: 1.8;
+            max-width: 800px;
+            opacity: 0.9;
+        }
+        
+        /* Key Metrics Bar */
+        .metrics-bar {
+            background: #f8fafc;
+            padding: 40px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        
+        .metric {
+            text-align: center;
+        }
+        
+        .metric-value {
+            font-size: 36px;
+            font-weight: 700;
+            color: #3730a3;
+            margin-bottom: 8px;
+        }
+        
+        .metric-label {
+            font-size: 14px;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Problem Section */
+        .problem-section {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .section-subtitle {
+            font-size: 18px;
+            color: #64748b;
+            text-align: center;
+            margin-bottom: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .problem-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .problem-card:hover {
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+        }
+        
+        .problem-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .problem-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+        }
+        
+        .problem-description {
+            font-size: 15px;
+            color: #64748b;
+            line-height: 1.6;
+        }
+        
+        /* Solution Section */
+        .solution-section {
+            padding: 80px 0;
+            background: #f8fafc;
+        }
+        
+        .solution-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .solution-content h3 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+        }
+        
+        .solution-content p {
+            font-size: 16px;
+            color: #64748b;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        
+        .solution-features {
+            list-style: none;
+        }
+        
+        .solution-features li {
+            display: flex;
+            align-items: start;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            background: #22c55e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        .solution-visual {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Services Section */
+        .services-section {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 30px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            border-color: #3730a3;
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(55, 48, 163, 0.1);
+        }
+        
+        .service-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: linear-gradient(135deg, #3730a3 0%, #6366f1 100%);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .service-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+        }
+        
+        .service-price {
+            font-size: 28px;
+            font-weight: 700;
+            color: #3730a3;
+            margin-bottom: 8px;
+        }
+        
+        .service-duration {
+            font-size: 14px;
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+        
+        .service-description {
+            font-size: 15px;
+            color: #475569;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .service-deliverables {
+            list-style: none;
+            font-size: 14px;
+            color: #64748b;
+        }
+        
+        .service-deliverables li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f1f5f9;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .service-deliverables li:last-child {
+            border-bottom: none;
+        }
+        
+        /* Case Studies */
+        .cases-section {
+            padding: 80px 0;
+            background: #f8fafc;
+        }
+        
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .case-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .case-card:hover {
+            transform: translateY(-4px);
+        }
+        
+        .case-header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);
+            color: white;
+            padding: 20px;
+        }
+        
+        .case-industry {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+            margin-bottom: 8px;
+        }
+        
+        .case-client {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .case-body {
+            padding: 30px;
+        }
+        
+        .case-metric {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        
+        .case-metric-label {
+            font-size: 14px;
+            color: #64748b;
+        }
+        
+        .case-metric-value {
+            font-size: 18px;
+            font-weight: 600;
+            color: #22c55e;
+        }
+        
+        .case-description {
+            font-size: 14px;
+            color: #475569;
+            line-height: 1.6;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        /* Team Section */
+        .team-section {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .team-member {
+            text-align: center;
+        }
+        
+        .member-photo {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #3730a3 0%, #6366f1 100%);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+        }
+        
+        .member-name {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+        
+        .member-role {
+            font-size: 16px;
+            color: #3730a3;
+            margin-bottom: 12px;
+        }
+        
+        .member-bio {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.6;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-title {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .cta-subtitle {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: #3730a3;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background: white;
+            color: #3730a3;
+        }
+        
+        /* Footer */
+        footer {
+            background: #0f172a;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .footer-info {
+            text-align: left;
+        }
+        
+        .footer-contact {
+            text-align: right;
+        }
+        
+        .contact-item {
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .contact-item strong {
+            color: white;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 36px;
+            }
+            
+            .tagline {
+                font-size: 20px;
+            }
+            
+            .solution-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .metric-value {
+                font-size: 28px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .cta-title {
+                font-size: 32px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-info, .footer-contact {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div style="display: flex; align-items: center; gap: 30px; margin-bottom: 20px;">
+                    <div style="width: 120px; height: 120px; background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%); border-radius: 20px; display: flex; align-items: center; justify-content: center; transform: rotate(-5deg); box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                        <span style="font-size: 48px; font-weight: 800; color: white; transform: rotate(5deg);">WiFi-Up</span>
+                    </div>
+                    <h1 class="logo">WiFi-Up™</h1>
+                </div>
+                <p class="tagline">Consultoría en Automatización Inteligente para PyMEs Mexicanas</p>
+                <p class="value-prop">
+                    Transformamos procesos empresariales mediante agentes autónomos inteligentes potencializados 
+                    con GPT-4 de OpenAI y arquitectura híbrida que garantiza seguridad de datos sensibles. 
+                    Reducción de costos operativos hasta 40% con retorno de inversión en 3-6 meses.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Key Metrics -->
+    <div class="metrics-bar">
+        <div class="container">
+            <div class="metrics-grid">
+                <div class="metric">
+                    <div class="metric-value">3-6 meses</div>
+                    <div class="metric-label">Retorno de Inversión</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">40%</div>
+                    <div class="metric-label">Reducción de Costos</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">95%</div>
+                    <div class="metric-label">Precisión en Decisiones</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">24/7</div>
+                    <div class="metric-label">Operación Continua</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Problem Section -->
+    <section class="problem-section">
+        <div class="container">
+            <h2 class="section-title">El Problema que Resolvemos</h2>
+            <p class="section-subtitle">
+                Las PyMEs mexicanas pierden competitividad por procesos manuales que grandes corporativos 
+                ya automatizaron hace años
+            </p>
+            
+            <div class="problems-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">⏱️</div>
+                    <h3 class="problem-title">Decisiones Lentas</h3>
+                    <p class="problem-description">
+                        Directores esperan días por reportes consolidados mientras competidores con IA 
+                        responden en minutos. Cada decisión tardía representa ventas perdidas y oportunidades 
+                        desaprovechadas.
+                    </p>
+                </div>
+                
+                <div class="problem-card">
+                    <div class="problem-icon">💸</div>
+                    <h3 class="problem-title">Pérdidas Prevenibles</h3>
+                    <p class="problem-description">
+                        Paros no planeados, inventario excesivo, clientes morosos - problemas detectables 
+                        con anticipación que cuestan millones anuales por falta de monitoreo inteligente.
+                    </p>
+                </div>
+                
+                <div class="problem-card">
+                    <div class="problem-icon">📊</div>
+                    <h3 class="problem-title">Datos Desaprovechados</h3>
+                    <p class="problem-description">
+                        ERPs acumulan gigabytes de información valiosa que nadie analiza. Patrones críticos 
+                        para competitividad permanecen ocultos en hojas de Excel que nadie revisa sistemáticamente.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution-section">
+        <div class="container">
+            <div class="solution-grid">
+                <div class="solution-content">
+                    <h3>Nuestra Solución: Agentes Autónomos Especializados</h3>
+                    <p>
+                        Desarrollamos agentes inteligentes potencializados con GPT-4 de OpenAI que trabajan 24/7 
+                        monitoreando, analizando y ejecutando acciones específicas en sus procesos críticos. 
+                        Arquitectura híbrida con orquestador inteligente que procesa datos sensibles localmente 
+                        y aprovecha la potencia de modelos avanzados para análisis predictivo.
+                    </p>
+                    
+                    <ul class="solution-features">
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <span>Integración directa con su ERP actual (SAP, Oracle, CONTPAQi, Aspel)</span>
+                        </li>
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <span>Procesamiento local para datos sensibles, nube para análisis avanzado</span>
+                        </li>
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <span>Alertas proactivas antes de que problemas se materialicen</span>
+                        </li>
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <span>Dashboards ejecutivos personalizados por rol</span>
+                        </li>
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <span>ROI demostrable en 3-6 meses</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="solution-visual">
+                    <div style="text-align: center; color: #64748b;">
+                        <div style="font-size: 72px; margin-bottom: 20px;">🤖</div>
+                        <h4 style="font-size: 20px; font-weight: 600; color: #1a1a1a; margin-bottom: 12px;">
+                            Agentes Trabajando 24/7
+                        </h4>
+                        <p style="font-size: 14px; line-height: 1.6;">
+                            QualityGuard monitoreando defectos<br>
+                            MaintenancePredictor previniendo paros<br>
+                            StockSense optimizando inventarios<br>
+                            CashGuard proyectando flujo de caja<br>
+                            PaymentHunter acelerando cobranza
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <h2 class="section-title">Servicios de Consultoría</h2>
+            <p class="section-subtitle">
+                Proyectos con alcance definido, entregables claros y ROI medible
+            </p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <span class="service-badge">Recomendado</span>
+                    <h3 class="service-title">Auditoría de Automatización</h3>
+                    <div class="service-price">$45,000 MXN</div>
+                    <div class="service-duration">2 semanas de análisis</div>
+                    <p class="service-description">
+                        Identificamos oportunidades específicas de automatización en su empresa con 
+                        beneficio cuantificado y plan de implementación detallado.
+                    </p>
+                    <ul class="service-deliverables">
+                        <li>📋 Mapeo de procesos actuales</li>
+                        <li>🎯 10 oportunidades priorizadas</li>
+                        <li>💰 ROI proyectado por proceso</li>
+                        <li>📊 Reporte ejecutivo de 30 páginas</li>
+                        <li>🎤 Presentación a directivos</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <h3 class="service-title">Desarrollo de Agente</h3>
+                    <div class="service-price">$85,000 - $180,000 MXN</div>
+                    <div class="service-duration">6-12 semanas de desarrollo</div>
+                    <p class="service-description">
+                        Construimos agente autónomo personalizado que proceso específico automatiza 
+                        completamente con integración a sus sistemas actuales.
+                    </p>
+                    <ul class="service-deliverables">
+                        <li>🤖 Agente funcional integrado</li>
+                        <li>🔗 Conexión con ERP existente</li>
+                        <li>📱 Dashboard de monitoreo</li>
+                        <li>📚 Documentación técnica</li>
+                        <li>🎓 Capacitación de usuarios</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <h3 class="service-title">Transformación de Proceso</h3>
+                    <div class="service-price">$120,000 - $250,000 MXN</div>
+                    <div class="service-duration">8-16 semanas completas</div>
+                    <p class="service-description">
+                        Rediseñamos proceso empresarial completo implementando múltiples agentes 
+                        que eficiencia operativa maximizan integralmente.
+                    </p>
+                    <ul class="service-deliverables">
+                        <li>🔄 Rediseño completo del proceso</li>
+                        <li>🤖 3-5 agentes especializados</li>
+                        <li>📊 Plataforma de control central</li>
+                        <li>📈 KPIs y métricas en tiempo real</li>
+                        <li>🛡️ Soporte post-implementación</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platform Features -->
+    <section class="cases-section">
+        <div class="container">
+            <h2 class="section-title">Ecosistema WiFi-Up™ Completo</h2>
+            <p class="section-subtitle">
+                Plataforma web, aplicación móvil y analista 24/7 trabajando para hacer su empresa vanguardista y competitiva
+            </p>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; margin-bottom: 60px;">
+                <div>
+                    <h3 style="font-size: 28px; font-weight: 600; color: #1a1a1a; margin-bottom: 20px;">
+                        Asistente Conversacional Inteligente
+                    </h3>
+                    <p style="font-size: 16px; color: #64748b; line-height: 1.8; margin-bottom: 24px;">
+                        Interactúe con sus datos empresariales mediante lenguaje natural. Realice consultas 
+                        complejas por voz o texto y obtenga respuestas instantáneas con visualizaciones 
+                        automáticas. El asistente comprende contexto empresarial mexicano y terminología 
+                        específica de su industria.
+                    </p>
+                    <div style="background: #f8fafc; border-radius: 12px; padding: 20px; margin-bottom: 20px;">
+                        <p style="font-style: italic; color: #475569; margin-bottom: 12px;">
+                            "¿Podemos cumplir la orden urgente de BMW para el viernes?"
+                        </p>
+                        <p style="color: #22c55e; font-size: 14px;">
+                            → Respuesta en 15 segundos con análisis de inventario, capacidad y alternativas
+                        </p>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 style="font-size: 28px; font-weight: 600; color: #1a1a1a; margin-bottom: 20px;">
+                        Dashboards Ejecutivos Personalizados
+                    </h3>
+                    <p style="font-size: 16px; color: #64748b; line-height: 1.8; margin-bottom: 24px;">
+                        Cada rol ejecutivo accede a métricas específicas para su función. CEO visualiza 
+                        vista integral de todos los departamentos, CFO monitorea flujo de caja y rentabilidad, 
+                        CTO supervisa infraestructura tecnológica, COO controla eficiencia operativa. 
+                        Información actualizada en tiempo real desde sus sistemas existentes.
+                    </p>
+                    <div style="text-align: center;">
+                        <a href="https://wifiup.replit.app/" target="_blank" style="display: inline-block; padding: 16px 32px; background: linear-gradient(135deg, #3730a3 0%, #6366f1 100%); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; transition: transform 0.3s;">
+                            Ver Demo de Plataforma →
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mobile App Section -->
+            <div style="background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%); border-radius: 20px; padding: 60px 40px; color: white; margin-bottom: 60px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+                    <div>
+                        <h3 style="font-size: 32px; font-weight: 700; margin-bottom: 24px;">
+                            📱 Aplicación Móvil WiFi-Up (En Desarrollo)
+                        </h3>
+                        <p style="font-size: 18px; line-height: 1.8; opacity: 0.95; margin-bottom: 30px;">
+                            Monitoree y controle su empresa desde cualquier lugar. Aplicación nativa para 
+                            iOS y Android que le permite acceder a todos sus dashboards, recibir alertas 
+                            críticas en tiempo real y tomar decisiones informadas sin importar donde se encuentre.
+                        </p>
+                        <div style="display: grid; gap: 16px;">
+                            <div style="display: flex; align-items: start; gap: 12px;">
+                                <span style="font-size: 20px;">✅</span>
+                                <span>Alertas push instantáneas cuando métricas críticas requieren atención</span>
+                            </div>
+                            <div style="display: flex; align-items: start; gap: 12px;">
+                                <span style="font-size: 20px;">📊</span>
+                                <span>Dashboards móviles optimizados para cada rol ejecutivo</span>
+                            </div>
+                            <div style="display: flex; align-items: start; gap: 12px;">
+                                <span style="font-size: 20px;">🎙️</span>
+                                <span>Comandos de voz para consultas rápidas mientras maneja o camina</span>
+                            </div>
+                            <div style="display: flex; align-items: start; gap: 12px;">
+                                <span style="font-size: 20px;">🔒</span>
+                                <span>Seguridad biométrica y encriptación de nivel empresarial</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="width: 250px; height: 500px; background: #000; border-radius: 30px; margin: 0 auto; padding: 20px; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
+                            <div style="background: #0ea5e9; border-radius: 20px; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px;">
+                                <div style="font-size: 60px; margin-bottom: 20px;">📈</div>
+                                <h4 style="font-size: 20px; font-weight: 700; margin-bottom: 12px;">WiFi-Up Mobile</h4>
+                                <p style="font-size: 14px; opacity: 0.9;">Su empresa en su bolsillo</p>
+                                <div style="margin-top: 30px; display: grid; gap: 10px; width: 100%;">
+                                    <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 10px; font-size: 12px;">
+                                        Línea 1: Eficiencia 92%
+                                    </div>
+                                    <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 10px; font-size: 12px;">
+                                        Inventario: Óptimo
+                                    </div>
+                                    <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 10px; font-size: 12px;">
+                                        Alertas: 2 pendientes
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Advanced Analytics Section -->
+            <div style="background: #f8fafc; border-radius: 20px; padding: 40px;">
+                <h3 style="font-size: 28px; font-weight: 700; color: #1a1a1a; text-align: center; margin-bottom: 40px;">
+                    🧠 Analista 24/7 con Enriquecimiento Macroeconómico
+                </h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 48px; margin-bottom: 16px;">🌎</div>
+                        <h4 style="font-size: 18px; font-weight: 600; color: #1a1a1a; margin-bottom: 12px;">
+                            Contexto de Mercado Global
+                        </h4>
+                        <p style="font-size: 14px; color: #64748b; line-height: 1.6;">
+                            Monitoreo de tendencias macroeconómicas que impactan su industria con 
+                            sugerencias profesionales de cómo beneficiarse de cambios del mercado
+                        </p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 48px; margin-bottom: 16px;">🎯</div>
+                        <h4 style="font-size: 18px; font-weight: 600; color: #1a1a1a; margin-bottom: 12px;">
+                            Recomendaciones Estratégicas
+                        </h4>
+                        <p style="font-size: 14px; color: #64748b; line-height: 1.6;">
+                            Análisis predictivo que identifica oportunidades antes que la competencia 
+                            basándose en patrones de datos internos y señales de mercado
+                        </p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 48px; margin-bottom: 16px;">⚡</div>
+                        <h4 style="font-size: 18px; font-weight: 600; color: #1a1a1a; margin-bottom: 12px;">
+                            Decisiones Vanguardistas
+                        </h4>
+                        <p style="font-size: 14px; color: #64748b; line-height: 1.6;">
+                            Transforme su empresa en líder del sector con inteligencia accionable 
+                            que convierte datos en ventaja competitiva sostenible
+                        </p>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 40px; padding: 30px; background: white; border-radius: 16px; border: 2px solid #3730a3;">
+                    <h4 style="font-size: 20px; font-weight: 600; color: #3730a3; margin-bottom: 12px;">
+                        Objetivo Principal de WiFi-Up™
+                    </h4>
+                    <p style="font-size: 16px; color: #1a1a1a; font-weight: 500;">
+                        Hacer que las empresas mexicanas sean vanguardistas y competitivas a nivel global 
+                        mediante automatización inteligente y análisis predictivo de clase mundial
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2 class="section-title">Equipo Directivo</h2>
+            <p class="section-subtitle">
+                Experiencia combinada en tecnología empresarial y transformación digital
+            </p>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-photo">👨‍💼</div>
+                    <h3 class="member-name">Alan Carvajal</h3>
+                    <p class="member-role">CEO & Fundador</p>
+                    <p class="member-bio">
+                        Ingeniero en Gestión de Información UASLP. Experiencia en inteligencia de sistemas 
+                        para sector gubernamental. Visionario en democratización de IA para PyMEs mexicanas.
+                    </p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-photo">👨‍💻</div>
+                    <h3 class="member-name">José Luis Tello</h3>
+                    <p class="member-role">CTO & Co-Fundador</p>
+                    <p class="member-bio">
+                        Arquitecto de sistemas con experiencia en Rappi, Starbucks Tech y BID. Desarrollador 
+                        de la plataforma WiFi-Up™ con expertise en soluciones distribuidas enterprise para América Latina.
+                    </p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-photo">👩‍🎨</div>
+                    <h3 class="member-name">Ashley Romo</h3>
+                    <p class="member-role">Head of UX</p>
+                    <p class="member-bio">
+                        Especialista en diseño de interfaces empresariales intuitivas. Transforma 
+                        complejidad técnica en experiencias que cualquier ejecutivo domina inmediatamente.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">Comience con una Auditoría Sin Riesgo</h2>
+            <p class="cta-subtitle">
+                En 2 semanas identificamos oportunidades de automatización con ROI cuantificado<br>
+                Inversión: $45,000 MXN - Retorno típico: $300,000+ MXN anuales
+            </p>
+            <div class="cta-buttons">
+                <a href="mailto:wifiupai@gmail.com?subject=Solicitud%20de%20Auditoría%20WiFi-Up" class="btn btn-primary">
+                    Agendar Auditoría Inicial
+                </a>
+                <a href="https://wifiup.replit.app/" target="_blank" class="btn btn-secondary">
+                    Ver Demo Plataforma
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3 style="font-size: 24px; margin-bottom: 12px;">WiFi-Up™</h3>
+                    <p style="font-size: 14px; color: rgba(255, 255, 255, 0.6);">
+                        Consultoría en Automatización Inteligente<br>
+                        IA Empresarial para México
+                    </p>
+                </div>
+                
+                <div class="footer-contact">
+                    <div class="contact-item">
+                        <strong>Email:</strong> wifiupai@gmail.com
+                    </div>
+                    <div class="contact-item">
+                        <strong>WhatsApp:</strong> +52 444 657 2280
+                    </div>
+                    <div class="contact-item">
+                        <strong>Plataforma:</strong> wifiup.replit.app
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1); text-align: center;">
+                <p style="font-size: 14px; color: rgba(255, 255, 255, 0.6);">
+                    © 2024 WiFi-Up™. Todos los derechos reservados. | Inteligencia Artificial Empresarial para México
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
